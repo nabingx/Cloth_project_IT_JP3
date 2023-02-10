@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cloth.title %>
+</p>
+
+<p>
+  <strong>Number of cloths:</strong>
+  <%= @cloth.number_of_cloths %>
+</p>
+
+<%= link_to 'Edit', edit_cloth_path(@cloth) %> |
+<%= link_to 'Back', cloths_path %>
