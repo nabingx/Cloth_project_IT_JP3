@@ -11,6 +11,7 @@
 
   <body>
     <%= yield %>
+    <%= link_to "ホーム", root_path %>
     <% if user_signed_in? %>
     <p>こんにちは、<%= current_user.email%></p>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
