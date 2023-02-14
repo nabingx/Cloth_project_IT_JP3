@@ -26,7 +26,8 @@
     <% @cloth.cloth_review.each do |cloth_review| %>
     <li>
         <%= cloth_review.review %>
-        (<i><%= cloth_review.user_id %></i>)
+        (<i><%= cloth_review.user.name if cloth_review.user%></i>)
+        <!-- (<i><%= cloth_review.user_id %></i>) -->
     </li>
     <% end %>
 </ul>
