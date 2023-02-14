@@ -5,7 +5,7 @@
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.name %>
+            <%= link_to current_user.name, users_show_path %>
           </a>
         </li>
       <% else %>
