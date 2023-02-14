@@ -1,7 +1,7 @@
 <div class="jumbotron m-5"  >
   <h1 class="display-4">Dreamer Closet へようこそ</h1>
   <hr class="my-4">
-  <ul class="navbar-nav mr-auto">
+  <!-- <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -13,11 +13,18 @@
           <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
         </li>
       <% end %>
-  </ul>
+  </ul> -->
   <br>
   <p>服についてレビューをするサイトです</p>
   <br>
-  <%= button_to "服一覧をみる", cloths_path, method: :get ,class: "btn btn-primary btn-lg" %>
+  <!-- <%= button_to "服一覧をみる", cloths_path, method: :get ,class: "btn btn-primary btn-lg" %> -->
+  
+  <%= image_tag 'https://cdn.mos.cms.futurecdn.net/Hs7ZoindPvMVa6pNt25tdH-1200-80.jpg', :style => "width:68vw;height:80vh" %>
   <br>
-  <%= button_to "Sign out" , destroy_user_session_path, method: :delete, class: "btn btn-primary btn-lg"%>
+  <br>
+  <br>
+  <% if user_signed_in? %>
+      <%= button_to "Sign out" , destroy_user_session_path, method: :delete, class: "btn btn-primary btn-lg"%>
+  <% else %>
+  <% end %>
 </div>
