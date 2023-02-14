@@ -9,6 +9,7 @@ class ClothsController < ApplicationController
 
   # GET /cloths/1 or /cloths/1.json
   def show
+    @cloth_review = ClothReview.new
   end
 
   # GET /cloths/new

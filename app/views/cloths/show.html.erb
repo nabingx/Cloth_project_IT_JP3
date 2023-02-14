@@ -19,7 +19,18 @@
    <% if @cloth.image.attached? %>
      <%= image_tag @cloth.image %>
    <% end %>
- </p>
+</p>
+ 
+<h2>Review Form</h2>
+<%= form_with(model: @cloth_review, local: true) do |form| %>
+  <div class= "field">
+    <%= form.text_area :review %>
+    <%= form.hidden_field :cloth_id, :value => @cloth.id %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %> 
 
 <%= link_to 'Edit', edit_cloth_path(@cloth) %> |
 <%= link_to 'Back', cloths_path %>

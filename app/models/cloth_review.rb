@@ -1,0 +1,2 @@
+class ClothReview < ApplicationRecord
+end
