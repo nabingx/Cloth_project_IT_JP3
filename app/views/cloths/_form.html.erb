@@ -1,37 +1,40 @@
-<%= form_with(model: cloth, local: true) do |form| %>
-  <% if cloth.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cloth.errors.count, "error") %> prohibited this cloth from being saved:</h2>
-
-      <ul>
-        <% cloth.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="card col-sm-6 mx-auto mt-5">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3">新しい服の追加</h3>
+    <%= form_with(model: cloth, local: true) do |form| %>
+    <% if cloth.errors.any? %>
+      <div id="error_explanation">　
+        <h2><%= pluralize(cloth.errors.count, "error") %> prohibited this cloth from being saved:</h2>
+        <ul>
+          <% cloth.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= form.label :title, "服のタイトル", :class => "form-label" %>
+      <%= form.text_field :title, :class => "form-control" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="field">
+      <%= form.label :number_of_cloths, "服の数", :class => "form-label" %>
+      <%= form.number_field :number_of_cloths, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :number_of_cloths %>
-    <%= form.number_field :number_of_cloths %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_field :detail %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %><br>
-  </div>
+    <div class="field">
+      <%= form.label :detail, "服の内容", :class => "form-label"  %>
+      <%= form.text_area :detail, :class => "form-control"%>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field">
+      <%= form.label :image, "服"  %>
+      <%= form.file_field :image %><br>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <% end %>
   </div>
-<% end %>
+</div>

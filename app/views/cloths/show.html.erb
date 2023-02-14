@@ -1,48 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @cloth.title %>
-</p>
-
-<p>
-  <strong>Number of cloths:</strong>
-  <%= @cloth.number_of_cloths %>
-</p>
-
-<p>
-  <strong>Detail:</strong>
-  <%= @cloth.detail %>
-</p>
-
-<p>
-   <% if @cloth.image.attached? %>
-     <%= image_tag @cloth.image %>
-   <% end %>
-</p>
-
-<h2>Review List</h2>
-<ul>
-    <% @cloth.cloth_review.each do |cloth_review| %>
-    <li>
-        <%= cloth_review.review %>
-        (<i><%= cloth_review.user.name if cloth_review.user%></i>)
-        <!-- (<i><%= cloth_review.user_id %></i>) -->
-    </li>
-    <% end %>
-</ul>
- 
-<h2>Review Form</h2>
-<%= form_with(model: @cloth_review, local: true) do |form| %>
-  <div class= "field">
-    <%= form.text_area :review %>
-    <%= form.hidden_field :cloth_id, :value => @cloth.id %>
-    <%= form.hidden_field :user_id, :value => current_user.id %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card mb-3">
+        <h3 class="card-header">服詳細</h3>
+        <div class="card-body">
+          <h5 class="card-title"><%= @cloth.title %></h5>
+          <h6 class="card-subtitle text-muted">服の数：<%= @cloth.number_of_cloths %></h6>
+  　　　　</div>
+  　　　　<% if @cloth.image.attached? %>
+          <%= image_tag @cloth.image, class: "card-img" %>
+        <% end %>
+        <div class="card-body">
+          <p class="card-text"><%= @cloth.detail %></p>
+        </div>
+      </div>
+    </div>
+  <div class="col-sm-4">
+    <div class="card bg-light mb-3" style="max-width: 40rem;">
+      <div class="card-header">レビュー</div>
+      <div class="card-body">
+        <ul>
+          <% @cloth.cloth_review.each do |cloth_review|%>
+            <% if cloth_review.user.avatar.attached? %>
+              <div style="width: 60px;" ><%= image_tag cloth_review.user.avatar, class: "card-img-top" %></div>
+            <% end %>
+          　<div class="card border-light mb-3" style="max-width: 20rem;">
+              <div class="card-header"><%= cloth_review.user.name %></div>
+              <div class="card-body">
+                <p class="card-text"><%= cloth_review.review %></p>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+      <%= form_with(model: @cloth_review, local: true) do |form| %>
+        <div class= "field">
+          <%= form.text_area :review, :class => "form-control" %>
+          <%= form.hidden_field :user_id, :value => current_user.id %>
+          <%= form.hidden_field :cloth_id, :value => @cloth.id %>
+        </div>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+       <% end %>
+       </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %> 
+</div>
 
 <%= link_to 'Edit', edit_cloth_path(@cloth) %> |
 <%= link_to 'Back', cloths_path %>
