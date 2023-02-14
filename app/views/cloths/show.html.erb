@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Detail:</strong>
+  <%= @cloth.detail %>
+</p>
+
+<p>
    <% if @cloth.image.attached? %>
      <%= image_tag @cloth.image %>
    <% end %>

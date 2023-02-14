@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2023_02_14_024924) do
     t.integer "number_of_cloths"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "detail"
   end
 
   create_table "users", force: :cascade do |t|
