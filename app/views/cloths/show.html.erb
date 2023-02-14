@@ -10,5 +10,11 @@
   <%= @cloth.number_of_cloths %>
 </p>
 
+<p>
+   <% if @cloth.image.attached? %>
+     <%= image_tag @cloth.image %>
+   <% end %>
+ </p>
+
 <%= link_to 'Edit', edit_cloth_path(@cloth) %> |
 <%= link_to 'Back', cloths_path %>
