@@ -20,12 +20,23 @@
      <%= image_tag @cloth.image %>
    <% end %>
 </p>
+
+<h2>Review List</h2>
+<ul>
+    <% @cloth.cloth_review.each do |cloth_review| %>
+    <li>
+        <%= cloth_review.review %>
+        (<i><%= cloth_review.user_id %></i>)
+    </li>
+    <% end %>
+</ul>
  
 <h2>Review Form</h2>
 <%= form_with(model: @cloth_review, local: true) do |form| %>
   <div class= "field">
     <%= form.text_area :review %>
     <%= form.hidden_field :cloth_id, :value => @cloth.id %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= form.submit %>

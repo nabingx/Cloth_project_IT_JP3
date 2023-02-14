@@ -26,7 +26,8 @@ class ClothReviewsController < ApplicationController
 
     respond_to do |format|
       if @cloth_review.save
-        format.html { redirect_to cloth_review_url(@cloth_review), notice: "Cloth review was successfully created." }
+        url = "/cloths/" + @cloth_review.cloth_id.to_s
+        format.html { redirect_to url, notice: 'Cloth review was successfully created.' }
         format.json { render :show, status: :created, location: @cloth_review }
       else
         format.html { render :new, status: :unprocessable_entity }
