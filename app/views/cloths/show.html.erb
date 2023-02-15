@@ -7,7 +7,7 @@
         <h3 class="card-header">服詳細</h3>
         <div class="card-body">
           <h5 class="card-title"><%= @cloth.title %></h5>
-          <h6 class="card-subtitle text-muted">服の数：<%= @cloth.number_of_cloths %></h6>
+          <h6 class="card-subtitle text-muted">服の値段（円）：<%= @cloth.number_of_cloths %></h6>
   　　　　</div>
   　　　　<% if @cloth.image.attached? %>
           <%= image_tag @cloth.image, class: "card-img" %>
