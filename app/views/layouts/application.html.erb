@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Thefirstrails</title>
+    <title>Ourfirstrails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <%= yield %>
-    <% if user_signed_in? %>
-    <p>こんにちは、<%= current_user.email%></p>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to "サインイン", new_user_session_path %>
-    <%= link_to "ユーサ登録", new_user_registration_path %>
-    <% end %>
+    <nav class="navbar navbar-toggler navbar-dark bg-success">
+      <%= link_to "Cloth Review - Make your closet become better than ever", root_path, class: "nav-link navbar-brand" %>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <div id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li style="display: block;" class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li style="display: block;" class="nav-item">
+            <%= link_to "Cloth", cloths_path, class: "nav-link" %>
+          </li>
+          <% if user_signed_in? %>
+            <li style="display: block;" class="nav-item">
+              <a href="/users/show">
+                <%= current_user.name %>
+              </a>
+            </li>
+          <% else %>
+            <li style="display: block;" class="nav-item">
+              <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

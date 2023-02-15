@@ -1,5 +1,6 @@
 class ClothsController < ApplicationController
   before_action :set_cloth, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /cloths or /cloths.json
   def index
@@ -8,6 +9,7 @@ class ClothsController < ApplicationController
 
   # GET /cloths/1 or /cloths/1.json
   def show
+    @cloth_review = ClothReview.new
   end
 
   # GET /cloths/new
@@ -65,6 +67,6 @@ class ClothsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cloth_params
-      params.require(:cloth).permit(:title, :number_of_cloths)
+      params.require(:cloth).permit(:title, :number_of_cloths, :detail, :image)
     end
 end
